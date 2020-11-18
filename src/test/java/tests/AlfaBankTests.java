@@ -1,6 +1,5 @@
 package tests;
 
-import com.codeborne.selenide.CollectionCondition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -33,5 +32,7 @@ public class AlfaBankTests {
         $(byTitle("Вклады")).click();
         $("button[data-test-id=\"tabs-list-tabTitle-0\"]").sibling(depositInsuranceIndex).click();
         $$("[data-test-id^=\"accordion-item\"]").shouldHave(size(4), itemWithText("Страхованию подлежат"));
+        $("[data-widget-name=\"Link\"]").preceding(0).shouldHave(text("Популярные"));
+        $("[data-test-id=\"tabs-list-tabTitle-0\"]").closest("div").shouldHave(text("Что такое вклад?"));
     }
 }
