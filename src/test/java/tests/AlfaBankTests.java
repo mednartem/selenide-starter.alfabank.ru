@@ -11,13 +11,10 @@ import static com.codeborne.selenide.Selectors.byTitle;
 import static com.codeborne.selenide.Selenide.*;
 
 public class AlfaBankTests {
-    @BeforeEach
-    void setUp() {
-        open("https://alfabank.ru/");
-    }
 
     @Test
     void checkSizeOfArchiveDepositTest() {
+        open("https://alfabank.ru/");
         $(byTitle("Вклады")).hover();
         $(byTitle("Депозиты")).click();
         $(byText("Архивные счета и депозиты")).click();
@@ -27,6 +24,7 @@ public class AlfaBankTests {
 
     @Test
     void checkSizeOfDepositInsuranceUseSiblingTest() {
+        open("https://alfabank.ru/");
         int depositInsuranceIndex = 0;
         $(byTitle("Вклады")).click();
         $("button[data-test-id='tabs-list-tabTitle-0']").sibling(depositInsuranceIndex).click();
@@ -37,11 +35,13 @@ public class AlfaBankTests {
 
     @Test
     void checkTextInTheCardUseClosestTest() {
+        open("https://alfabank.ru/");
         $(byText("Подробнее")).closest("div").shouldHave(text("Получить карту"));
     }
 
     @Test
     void checkTextInTheCardUsePrecedingTest() {
+        open("https://alfabank.ru/");
         $("[data-test-id='Mortgage-Benefits-Block-Main']")
                 .$(".fWMAmd3")
                 .preceding(0)
